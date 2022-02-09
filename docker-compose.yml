@@ -1,0 +1,52 @@
+version: '3.9'
+services:
+  users:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    container_name: users
+    entrypoint: go
+    command:
+      - run
+      - ./users/server.go
+
+    environment:
+      - PORT=4001
+
+    ports:
+      - "4001:4001"
+
+  posts:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    container_name: posts
+    entrypoint: go
+    command:
+      - run
+      - ./posts/server.go
+
+    environment:
+      - PORT=4002
+
+    ports:
+      - "4002:4002"
+
+  comments:
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+
+      container_name: comments
+      entrypoint: go
+      command:
+        - run
+        - ./comments/server.go
+
+      environment:
+        - PORT=4003
+
+      ports:
+        - "4003:4003"

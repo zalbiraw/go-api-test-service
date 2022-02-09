@@ -1,0 +1,12 @@
+extend type Query {
+    comment(id: ID!): Comment!
+    comments: [Comment!]!
+}
+
+type Comment @key(fields: "id") {
+    id: ID!
+    postId: ID!
+    name: String!
+    email: String!
+    body: String!
+}

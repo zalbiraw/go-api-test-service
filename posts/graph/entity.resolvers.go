@@ -5,14 +5,23 @@ package graph
 
 import (
 	"context"
-	"fmt"
-
 	"github.com/zalbiraw/go-api-test-service/posts/graph/generated"
+	"github.com/zalbiraw/go-api-test-service/posts/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
 )
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
-	panic(fmt.Errorf("not implemented"))
+	posts, err := helpers.GetPosts()
+	if nil != err {
+		return nil, err
+	}
+
+	//postId, err := strconv.Atoi(id)
+	//if nil != err {
+	//	return nil, err
+	//}
+
+	return &((*posts)[0]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

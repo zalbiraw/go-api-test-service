@@ -8,7 +8,7 @@ import (
 )
 
 func GetComments() (*[]model.Comment, error) {
-	jsonFile, err := os.Open("./graph/db.json")
+	jsonFile, err := os.Open("./comments/graph/db.json")
 
 	if nil != err {
 		return nil, err

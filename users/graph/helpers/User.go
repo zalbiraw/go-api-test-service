@@ -8,7 +8,7 @@ import (
 )
 
 func GetUsers() (*[]model.User, error) {
-	jsonFile, err := os.Open("./graph/db.json")
+	jsonFile, err := os.Open("./users/graph/db.json")
 
 	if nil != err {
 		return nil, err

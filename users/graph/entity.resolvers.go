@@ -5,14 +5,23 @@ package graph
 
 import (
 	"context"
-	"fmt"
-
 	"github.com/zalbiraw/go-api-test-service/users/graph/generated"
+	"github.com/zalbiraw/go-api-test-service/users/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/users/graph/model"
 )
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	users, err := helpers.GetUsers()
+	if nil != err {
+		return nil, err
+	}
+
+	//userId, err := strconv.Atoi(id)
+	//if nil != err {
+	//	return nil, err
+	//}
+
+	return &((*users)[0]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

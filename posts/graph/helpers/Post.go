@@ -8,7 +8,7 @@ import (
 )
 
 func GetPosts() (*[]model.Post, error) {
-	jsonFile, err := os.Open("./graph/db.json")
+	jsonFile, err := os.Open("./posts/graph/db.json")
 
 	if nil != err {
 		return nil, err

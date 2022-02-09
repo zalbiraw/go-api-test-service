@@ -5,14 +5,23 @@ package graph
 
 import (
 	"context"
-	"fmt"
-
 	"github.com/zalbiraw/go-api-test-service/comments/graph/generated"
+	"github.com/zalbiraw/go-api-test-service/comments/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
 )
 
 func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model.Comment, error) {
-	panic(fmt.Errorf("not implemented"))
+	comments, err := helpers.GetComments()
+	if nil != err {
+		return nil, err
+	}
+
+	//commentId, err := strconv.Atoi(id)
+	//if nil != err {
+	//	return nil, err
+	//}
+
+	return &((*comments)[0]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

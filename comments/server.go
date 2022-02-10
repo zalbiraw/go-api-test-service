@@ -9,6 +9,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 
 	"github.com/zalbiraw/go-api-test-service/comments/graph"
+	"github.com/zalbiraw/go-api-test-service/comments/helpers"
 )
 
 const defaultPort = "4001"
@@ -17,6 +18,12 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
+	}
+
+	err := helpers.LoadComments()
+
+	if nil != err {
+		panic("Unable to load comments.")
 	}
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))

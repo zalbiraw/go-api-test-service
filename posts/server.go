@@ -9,6 +9,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 
 	"github.com/zalbiraw/go-api-test-service/posts/graph"
+	"github.com/zalbiraw/go-api-test-service/posts/helpers"
 )
 
 const defaultPort = "4001"
@@ -17,6 +18,12 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
+	}
+
+	err := helpers.LoadPosts()
+
+	if nil != err {
+		panic("Unable to load posts.")
 	}
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))

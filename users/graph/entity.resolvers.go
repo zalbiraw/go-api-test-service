@@ -8,20 +8,17 @@ import (
 	"strconv"
 
 	"github.com/zalbiraw/go-api-test-service/users/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/users/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/users/graph/model"
+	"github.com/zalbiraw/go-api-test-service/users/helpers"
 )
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
-	users, err := helpers.GetUsers()
-	if nil != err {
-		return nil, err
-	}
-
 	userId, err := strconv.Atoi(id)
 	if nil != err {
 		return nil, err
 	}
+
+	users := helpers.GetUsers()
 
 	return &((*users)[userId]), nil
 }

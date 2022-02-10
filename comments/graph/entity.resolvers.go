@@ -8,29 +8,23 @@ import (
 	"strconv"
 
 	"github.com/zalbiraw/go-api-test-service/comments/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/comments/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/comments/helpers"
 )
 
 func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model.Comment, error) {
-	comments, err := helpers.GetComments()
-	if nil != err {
-		return nil, err
-	}
-
 	commentId, err := strconv.Atoi(id)
 	if nil != err {
 		return nil, err
 	}
 
+	comments := helpers.GetComments()
+
 	return &((*comments)[commentId]), nil
 }
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
-	commentsArray, err := helpers.GetComments()
-	if nil != err {
-		return nil, err
-	}
+	commentsArray := helpers.GetComments()
 
 	var comment model.Comment
 	comments := make([]*model.Comment, len(*commentsArray))

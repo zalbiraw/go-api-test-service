@@ -8,8 +8,8 @@ import (
 	"strconv"
 
 	"github.com/zalbiraw/go-api-test-service/posts/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/posts/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
+	"github.com/zalbiraw/go-api-test-service/posts/helpers"
 )
 
 func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error) {
@@ -18,19 +18,13 @@ func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error
 		return nil, err
 	}
 
-	posts, err := helpers.GetPosts()
-	if nil != err {
-		return nil, err
-	}
+	posts := helpers.GetPosts()
 
 	return &((*posts)[postId]), nil
 }
 
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
-	postsArray, err := helpers.GetPosts()
-	if nil != err {
-		return nil, err
-	}
+	postsArray := helpers.GetPosts()
 
 	posts := make([]*model.Post, len(*postsArray))
 	for i := 0; i < len(*postsArray); i++ {

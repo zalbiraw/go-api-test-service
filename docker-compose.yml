@@ -3,10 +3,7 @@ services:
   users:
     image: zalbiraw/go-api-test-service
     container_name: users
-    entrypoint: go
-    command:
-      - run
-      - ./users/server.go
+    entrypoint: ./users/server
 
     environment:
       - PORT=4001
@@ -17,24 +14,18 @@ services:
   posts:
     image: zalbiraw/go-api-test-service
     container_name: posts
-    entrypoint: go
-    command:
-      - run
-      - ./posts/server.go
+    entrypoint: ./posts/server
 
     environment:
       - PORT=4002
 
     ports:
       - "4002:4002"
-      -
+
   comments:
     image: zalbiraw/go-api-test-service
     container_name: comments
-    entrypoint: go
-    command:
-      - run
-      - ./comments/server.go
+    entrypoint: ./comments/server
 
     environment:
       - PORT=4003

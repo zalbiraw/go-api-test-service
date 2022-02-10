@@ -8,8 +8,8 @@ import (
 	"strconv"
 
 	"github.com/zalbiraw/go-api-test-service/comments/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/comments/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/comments/helpers"
 )
 
 func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment, error) {
@@ -18,19 +18,13 @@ func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment,
 		return nil, err
 	}
 
-	comments, err := helpers.GetComments()
-	if nil != err {
-		return nil, err
-	}
+	comments := helpers.GetComments()
 
 	return &((*comments)[commentId]), nil
 }
 
 func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) {
-	commentsArray, err := helpers.GetComments()
-	if nil != err {
-		return nil, err
-	}
+	commentsArray := helpers.GetComments()
 
 	comments := make([]*model.Comment, len(*commentsArray))
 	for i := 0; i < len(*commentsArray); i++ {

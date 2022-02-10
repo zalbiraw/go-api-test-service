@@ -8,29 +8,23 @@ import (
 	"strconv"
 
 	"github.com/zalbiraw/go-api-test-service/posts/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/posts/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
+	"github.com/zalbiraw/go-api-test-service/posts/helpers"
 )
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
-	posts, err := helpers.GetPosts()
-	if nil != err {
-		return nil, err
-	}
-
 	postId, err := strconv.Atoi(id)
 	if nil != err {
 		return nil, err
 	}
 
+	posts := helpers.GetPosts()
+
 	return &((*posts)[postId]), nil
 }
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
-	postsArray, err := helpers.GetPosts()
-	if nil != err {
-		return nil, err
-	}
+	postsArray := helpers.GetPosts()
 
 	var post model.Post
 	posts := make([]*model.Post, len(*postsArray))

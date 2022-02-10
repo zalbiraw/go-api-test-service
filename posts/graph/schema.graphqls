@@ -12,5 +12,5 @@ type Post @key(fields: "id") {
 
 extend type User @key(fields: "id") {
     id: ID! @external
-    posts: [Post]
+    posts: [Post!]!
 }

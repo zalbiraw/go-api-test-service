@@ -26,6 +26,27 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 	return &((*posts)[postId]), nil
 }
 
+func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
+	postsArray, err := helpers.GetPosts()
+	if nil != err {
+		return nil, err
+	}
+
+	var post model.Post
+	posts := make([]*model.Post, len(*postsArray))
+	for i := 0; i < len(*postsArray); i++ {
+		post = (*postsArray)[i]
+		if id == post.ID {
+			posts[i] = &post
+		}
+	}
+
+	return &model.User{
+		ID:    id,
+		Posts: posts,
+	}, nil
+}
+
 // Entity returns generated.EntityResolver implementation.
 func (r *Resolver) Entity() generated.EntityResolver { return &entityResolver{r} }
 

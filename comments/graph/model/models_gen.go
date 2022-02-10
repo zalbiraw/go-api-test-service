@@ -11,3 +11,10 @@ type Comment struct {
 }
 
 func (Comment) IsEntity() {}
+
+type Post struct {
+	ID       string     `json:"id"`
+	Comments []*Comment `json:"comments"`
+}
+
+func (Post) IsEntity() {}

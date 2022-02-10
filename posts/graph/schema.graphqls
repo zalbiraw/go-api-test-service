@@ -9,3 +9,8 @@ type Post @key(fields: "id") {
     title: String!
     body: String!
 }
+
+extend type User @key(fields: "id") {
+    id: ID! @external
+    posts: [Post]
+}

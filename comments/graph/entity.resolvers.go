@@ -26,6 +26,27 @@ func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model
 	return &((*comments)[commentId]), nil
 }
 
+func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
+	commentsArray, err := helpers.GetComments()
+	if nil != err {
+		return nil, err
+	}
+
+	var comment model.Comment
+	comments := make([]*model.Comment, len(*commentsArray))
+	for i := 0; i < len(*commentsArray); i++ {
+		comment = (*commentsArray)[i]
+		if id == comment.ID {
+			comments[i] = &comment
+		}
+	}
+
+	return &model.Post{
+		ID:       id,
+		Comments: comments,
+	}, nil
+}
+
 // Entity returns generated.EntityResolver implementation.
 func (r *Resolver) Entity() generated.EntityResolver { return &entityResolver{r} }
 

@@ -10,3 +10,8 @@ type Comment @key(fields: "id") {
     email: String!
     body: String!
 }
+
+extend type Post @key(fields: "id") {
+    id: ID! @external
+    comments: [Comment]
+}

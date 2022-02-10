@@ -1,10 +1,7 @@
 version: '3.9'
 services:
   users:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-
+    image: zalbiraw/go-api-test-service
     container_name: users
     entrypoint: go
     command:
@@ -18,10 +15,7 @@ services:
       - "4001:4001"
 
   posts:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-
+    image: zalbiraw/go-api-test-service
     container_name: posts
     entrypoint: go
     command:
@@ -33,20 +27,17 @@ services:
 
     ports:
       - "4002:4002"
-
+      -
   comments:
-      build:
-        context: .
-        dockerfile: ./Dockerfile
+    image: zalbiraw/go-api-test-service
+    container_name: comments
+    entrypoint: go
+    command:
+      - run
+      - ./comments/server.go
 
-      container_name: comments
-      entrypoint: go
-      command:
-        - run
-        - ./comments/server.go
+    environment:
+      - PORT=4003
 
-      environment:
-        - PORT=4003
-
-      ports:
-        - "4003:4003"
+    ports:
+      - "4003:4003"

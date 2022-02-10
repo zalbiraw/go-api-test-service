@@ -5,10 +5,11 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/posts/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
-	"strconv"
 )
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {

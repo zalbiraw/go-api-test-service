@@ -5,10 +5,11 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/users/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/users/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/users/graph/model"
-	"strconv"
 )
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {

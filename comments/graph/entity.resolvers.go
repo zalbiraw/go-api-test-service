@@ -5,10 +5,11 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
-	"strconv"
 )
 
 func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model.Comment, error) {

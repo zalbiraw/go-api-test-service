@@ -8,6 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
+	"strconv"
 )
 
 func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model.Comment, error) {
@@ -16,12 +17,12 @@ func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model
 		return nil, err
 	}
 
-	//commentId, err := strconv.Atoi(id)
-	//if nil != err {
-	//	return nil, err
-	//}
+	commentId, err := strconv.Atoi(id)
+	if nil != err {
+		return nil, err
+	}
 
-	return &((*comments)[0]), nil
+	return &((*comments)[commentId]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

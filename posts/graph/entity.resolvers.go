@@ -8,6 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/posts/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
+	"strconv"
 )
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
@@ -16,12 +17,12 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 		return nil, err
 	}
 
-	//postId, err := strconv.Atoi(id)
-	//if nil != err {
-	//	return nil, err
-	//}
+	postId, err := strconv.Atoi(id)
+	if nil != err {
+		return nil, err
+	}
 
-	return &((*posts)[0]), nil
+	return &((*posts)[postId]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

@@ -8,6 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/users/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/users/graph/helpers"
 	"github.com/zalbiraw/go-api-test-service/users/graph/model"
+	"strconv"
 )
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
@@ -16,12 +17,12 @@ func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.Us
 		return nil, err
 	}
 
-	//userId, err := strconv.Atoi(id)
-	//if nil != err {
-	//	return nil, err
-	//}
+	userId, err := strconv.Atoi(id)
+	if nil != err {
+		return nil, err
+	}
 
-	return &((*users)[0]), nil
+	return &((*users)[userId]), nil
 }
 
 // Entity returns generated.EntityResolver implementation.

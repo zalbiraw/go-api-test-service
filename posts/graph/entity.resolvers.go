@@ -20,7 +20,7 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 
 	posts := helpers.GetPosts()
 
-	return &((*posts)[postId]), nil
+	return &((*posts)[postId-1]), nil
 }
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {

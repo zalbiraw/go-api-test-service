@@ -20,7 +20,7 @@ func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment,
 
 	comments := helpers.GetComments()
 
-	return &((*comments)[commentId]), nil
+	return &((*comments)[commentId-1]), nil
 }
 
 func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) {

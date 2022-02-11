@@ -20,7 +20,7 @@ func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error
 
 	users := helpers.GetUsers()
 
-	return &((*users)[userId]), nil
+	return &((*users)[userId-1]), nil
 }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {

@@ -20,7 +20,7 @@ func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model
 
 	comments := helpers.GetComments()
 
-	return &((*comments)[commentId]), nil
+	return &((*comments)[commentId-1]), nil
 }
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {

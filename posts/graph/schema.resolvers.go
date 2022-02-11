@@ -20,7 +20,7 @@ func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error
 
 	posts := helpers.GetPosts()
 
-	return &((*posts)[postId]), nil
+	return &((*posts)[postId-1]), nil
 }
 
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {

@@ -28,7 +28,7 @@ func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.Us
 
 	var posts []*model.Post
 	for i := 0; i < len(postsArray); i++ {
-		if id == postsArray[i].ID {
+		if id == postsArray[i].UserID {
 			posts = append(posts, postsArray[i])
 		}
 	}

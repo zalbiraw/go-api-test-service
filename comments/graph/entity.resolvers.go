@@ -28,7 +28,7 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 
 	var comments []*model.Comment
 	for i := 0; i < len(commentsArray); i++ {
-		if id == commentsArray[i].ID {
+		if id == commentsArray[i].PostID {
 			comments = append(comments, commentsArray[i])
 		}
 	}

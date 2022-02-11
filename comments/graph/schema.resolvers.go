@@ -20,18 +20,11 @@ func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment,
 
 	comments := helpers.GetComments()
 
-	return &(comments[commentId-1]), nil
+	return comments[commentId-1], nil
 }
 
 func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) {
-	commentsArray := helpers.GetComments()
-
-	comments := make([]*model.Comment, len(commentsArray))
-	for i := 0; i < len(commentsArray); i++ {
-		comments[i] = &((commentsArray)[i])
-	}
-
-	return comments, nil
+	return helpers.GetComments(), nil
 }
 
 // Query returns generated.QueryResolver implementation.

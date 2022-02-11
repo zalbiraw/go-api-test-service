@@ -8,7 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/users/graph/model"
 )
 
-var users []model.User
+var users []*model.User
 
 func LoadUsers() error {
 	jsonFile, err := os.Open("./users/helpers/db.json")
@@ -26,6 +26,6 @@ func LoadUsers() error {
 	return nil
 }
 
-func GetUsers() []model.User {
+func GetUsers() []*model.User {
 	return users
 }

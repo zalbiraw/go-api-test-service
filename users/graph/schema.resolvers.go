@@ -20,18 +20,11 @@ func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error
 
 	users := helpers.GetUsers()
 
-	return &(users[userId-1]), nil
+	return users[userId-1], nil
 }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
-	usersArray := helpers.GetUsers()
-
-	users := make([]*model.User, len(usersArray))
-	for i := 0; i < len(usersArray); i++ {
-		users[i] = &((usersArray)[i])
-	}
-
-	return users, nil
+	return helpers.GetUsers(), nil
 }
 
 // Query returns generated.QueryResolver implementation.

@@ -8,7 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/comments/graph/model"
 )
 
-var comments []model.Comment
+var comments []*model.Comment
 
 func LoadComments() error {
 	jsonFile, err := os.Open("./comments/helpers/db.json")
@@ -25,6 +25,6 @@ func LoadComments() error {
 	return nil
 }
 
-func GetComments() []model.Comment {
+func GetComments() []*model.Comment {
 	return comments
 }

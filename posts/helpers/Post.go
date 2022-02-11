@@ -8,7 +8,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
 )
 
-var posts []model.Post
+var posts []*model.Post
 
 func LoadPosts() error {
 	jsonFile, err := os.Open("./posts/helpers/db.json")
@@ -26,6 +26,6 @@ func LoadPosts() error {
 	return nil
 }
 
-func GetPosts() []model.Post {
+func GetPosts() []*model.Post {
 	return posts
 }

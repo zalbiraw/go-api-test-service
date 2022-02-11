@@ -20,15 +20,15 @@ func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error
 
 	posts := helpers.GetPosts()
 
-	return &((*posts)[postId-1]), nil
+	return &(posts[postId-1]), nil
 }
 
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
 	postsArray := helpers.GetPosts()
 
-	posts := make([]*model.Post, len(*postsArray))
-	for i := 0; i < len(*postsArray); i++ {
-		posts[i] = &((*postsArray)[i])
+	posts := make([]*model.Post, len(postsArray))
+	for i := 0; i < len(postsArray); i++ {
+		posts[i] = &((postsArray)[i])
 	}
 
 	return posts, nil

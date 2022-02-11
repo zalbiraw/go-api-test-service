@@ -26,6 +26,6 @@ func LoadPosts() error {
 	return nil
 }
 
-func GetPosts() *[]model.Post {
-	return &posts
+func GetPosts() []model.Post {
+	return posts
 }

@@ -20,16 +20,16 @@ func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model
 
 	comments := helpers.GetComments()
 
-	return &((*comments)[commentId-1]), nil
+	return &(comments[commentId-1]), nil
 }
 
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
 	commentsArray := helpers.GetComments()
 
 	var comment model.Comment
-	comments := make([]*model.Comment, len(*commentsArray))
-	for i := 0; i < len(*commentsArray); i++ {
-		comment = (*commentsArray)[i]
+	comments := make([]*model.Comment, len(commentsArray))
+	for i := 0; i < len(commentsArray); i++ {
+		comment = (commentsArray)[i]
 		if id == comment.ID {
 			comments[i] = &comment
 		}

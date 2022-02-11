@@ -26,6 +26,6 @@ func LoadUsers() error {
 	return nil
 }
 
-func GetUsers() *[]model.User {
-	return &users
+func GetUsers() []model.User {
+	return users
 }

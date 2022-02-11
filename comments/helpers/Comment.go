@@ -25,6 +25,6 @@ func LoadComments() error {
 	return nil
 }
 
-func GetComments() *[]model.Comment {
-	return &comments
+func GetComments() []model.Comment {
+	return comments
 }

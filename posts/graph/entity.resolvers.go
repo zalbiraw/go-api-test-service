@@ -20,16 +20,16 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 
 	posts := helpers.GetPosts()
 
-	return &((*posts)[postId-1]), nil
+	return &(posts[postId-1]), nil
 }
 
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	postsArray := helpers.GetPosts()
 
 	var post model.Post
-	posts := make([]*model.Post, len(*postsArray))
-	for i := 0; i < len(*postsArray); i++ {
-		post = (*postsArray)[i]
+	posts := make([]*model.Post, len(postsArray))
+	for i := 0; i < len(postsArray); i++ {
+		post = postsArray[i]
 		if id == post.ID {
 			posts[i] = &post
 		}

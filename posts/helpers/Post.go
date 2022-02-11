@@ -3,7 +3,6 @@ package helpers
 import (
 	"encoding/json"
 	"io/ioutil"
-	"os"
 
 	"github.com/zalbiraw/go-api-test-service/posts/graph/model"
 )
@@ -11,15 +10,11 @@ import (
 var posts []*model.Post
 
 func LoadPosts() error {
-	jsonFile, err := os.Open("./posts/helpers/db.json")
+	byteValue, err := ioutil.ReadFile("./posts/helpers/db.json")
 
 	if nil != err {
 		return err
 	}
-
-	defer jsonFile.Close()
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	json.Unmarshal(byteValue, &posts)
 

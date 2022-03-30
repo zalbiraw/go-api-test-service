@@ -8,7 +8,8 @@ type Comment @key(fields: "id") {
     postId: ID!
     name: String!
     email: String!
-    body: Body!
+    body: String!
+    created: DateTime!
 }
 
 extend type Post @key(fields: "id") {
@@ -16,4 +17,4 @@ extend type Post @key(fields: "id") {
     comments: [Comment!]!
 }
 
-scalar Body
+scalar DateTime

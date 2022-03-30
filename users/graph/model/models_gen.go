@@ -30,6 +30,7 @@ type User struct {
 	Phone    string   `json:"phone"`
 	Website  string   `json:"website"`
 	Company  *Company `json:"company"`
+	Created  string   `json:"created"`
 }
 
 func (User) IsEntity() {}

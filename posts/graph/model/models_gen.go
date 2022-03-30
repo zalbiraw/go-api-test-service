@@ -3,10 +3,11 @@
 package model
 
 type Post struct {
-	ID     string `json:"id"`
-	UserID string `json:"userId"`
-	Title  string `json:"title"`
-	Body   string `json:"body"`
+	ID      string `json:"id"`
+	UserID  string `json:"userId"`
+	Title   string `json:"title"`
+	Body    string `json:"body"`
+	Created string `json:"created"`
 }
 
 func (Post) IsEntity() {}

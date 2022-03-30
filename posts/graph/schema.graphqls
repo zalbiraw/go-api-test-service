@@ -7,7 +7,8 @@ type Post @key(fields: "id") {
     id: ID!
     userId: ID!
     title: String!
-    body: Body!
+    body: String!
+    created: DateTime!
 }
 
 extend type User @key(fields: "id") {
@@ -15,4 +16,4 @@ extend type User @key(fields: "id") {
     posts: [Post!]!
 }
 
-scalar Body
+scalar DateTime

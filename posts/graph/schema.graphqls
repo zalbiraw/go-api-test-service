@@ -7,10 +7,12 @@ type Post @key(fields: "id") {
     id: ID!
     userId: ID!
     title: String!
-    body: String!
+    body: Body!
 }
 
 extend type User @key(fields: "id") {
     id: ID! @external
     posts: [Post!]!
 }
+
+scalar Body

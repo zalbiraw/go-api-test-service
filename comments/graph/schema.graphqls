@@ -8,10 +8,12 @@ type Comment @key(fields: "id") {
     postId: ID!
     name: String!
     email: String!
-    body: String!
+    body: Body!
 }
 
 extend type Post @key(fields: "id") {
     id: ID! @external
     comments: [Comment!]!
 }
+
+scalar Body

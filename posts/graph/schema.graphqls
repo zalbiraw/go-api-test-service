@@ -8,9 +8,12 @@ type Post @key(fields: "id") {
     userId: ID!
     title: String!
     body: String!
+    created: DateTime!
 }
 
 extend type User @key(fields: "id") {
     id: ID! @external
     posts: [Post!]!
 }
+
+scalar DateTime

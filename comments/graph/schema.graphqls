@@ -9,9 +9,12 @@ type Comment @key(fields: "id") {
     name: String!
     email: String!
     body: String!
+    created: DateTime!
 }
 
 extend type Post @key(fields: "id") {
     id: ID! @external
     comments: [Comment!]!
 }
+
+scalar DateTime

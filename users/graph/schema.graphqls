@@ -12,6 +12,7 @@ type User @key(fields: "id") {
     phone: String!
     website: String!
     company: Company!
+    created: DateTime!
 }
 
 type Address {
@@ -32,3 +33,5 @@ type Company {
     catchPhrase: String!
     bs: String!
 }
+
+scalar DateTime

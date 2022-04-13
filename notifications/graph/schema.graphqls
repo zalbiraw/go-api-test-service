@@ -1,0 +1,15 @@
+extend type Subscription {
+    getUserNotifications(userId: ID!): User!
+}
+
+type Notification @key(fields: "id") {
+    id: ID!
+    userId: ID!
+    title: String!
+    body: String!
+}
+
+extend type User @key(fields: "id") {
+    id: ID! @external
+    notifications: [Notification!]!
+}

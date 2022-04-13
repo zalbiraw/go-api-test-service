@@ -16,7 +16,7 @@ import (
 func (r *entityResolver) FindNotificationByID(ctx context.Context, id string) (*model.Notification, error) {
 	return &model.Notification{
 		ID:     id,
-		UserID: strconv.Itoa(rand.Intn(10)),
+		UserID: strconv.Itoa(rand.Intn(10) + 1),
 		Title:  *helpers.RandSentence(),
 		Body:   *helpers.RandSentences(5),
 	}, nil
@@ -31,7 +31,7 @@ func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.Us
 	var notifications []*model.Notification
 	for i := 0; i < userId; i++ {
 		notifications = append(notifications, &model.Notification{
-			ID:     strconv.Itoa(rand.Intn(1000)),
+			ID:     strconv.Itoa(rand.Intn(1000) + 1),
 			UserID: strconv.Itoa(userId),
 			Title:  *helpers.RandSentence(),
 			Body:   *helpers.RandSentences(5),

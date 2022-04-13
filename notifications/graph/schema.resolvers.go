@@ -23,12 +23,11 @@ func (r *subscriptionResolver) GetUserNotifications(ctx context.Context, userID 
 	msgs := make(chan *model.User, 1)
 
 	go func() {
-		var notifications []*model.Notification
-
 		for {
-			for i := 0; i < userId; i++ {
+			var notifications []*model.Notification
+			for i := 0; i < rand.Intn(userId)+1; i++ {
 				notifications = append(notifications, &model.Notification{
-					ID:     strconv.Itoa(rand.Intn(1000)),
+					ID:     strconv.Itoa(rand.Intn(1000) + 1),
 					UserID: strconv.Itoa(userId),
 					Title:  *helpers.RandSentence(),
 					Body:   *helpers.RandSentences(5),

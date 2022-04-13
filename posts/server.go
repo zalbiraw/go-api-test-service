@@ -2,11 +2,10 @@
 package main
 
 import (
+	"github.com/99designs/gqlgen/graphql/playground"
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/99designs/gqlgen/graphql/playground"
 
 	"github.com/zalbiraw/go-api-test-service/posts/graph"
 	"github.com/zalbiraw/go-api-test-service/posts/helpers"
@@ -27,7 +26,7 @@ func main() {
 	}
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
-	http.Handle("/query", graph.GraphQLEndpointHandler(graph.EndpointOptions{ EnableDebug: false }))
+	http.Handle("/query", graph.GraphQLEndpointHandler(graph.EndpointOptions{EnableDebug: false}))
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))

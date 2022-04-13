@@ -6,10 +6,11 @@ ARG         arch
 
 WORKDIR     /go/src/github.com/zalbiraw/go-api-test-service
 
-COPY        go.mod      go.mod
-COPY        users/      users
-COPY        posts/      posts
-COPY        comments/   comments
+COPY        go.mod          go.mod
+COPY        users/          users
+COPY        posts/          posts
+COPY        comments/       comments
+COPY        notifications/  notifications
 
 ENV         CGO_ENABLED=0
 ENV         GOOS=linux

@@ -15,7 +15,7 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	graph "github.com/zalbiraw/go-api-test-service/notifications/graph"
+	"github.com/zalbiraw/go-api-test-service/notifications/graph"
 	"github.com/zalbiraw/go-api-test-service/notifications/graph/generated"
 )
 

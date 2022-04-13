@@ -32,3 +32,14 @@ services:
 
     ports:
       - "4003:4003"
+
+  notifications:
+    image: zalbiraw/go-api-test-service
+    container_name: notifications
+    entrypoint: ./notifications/server
+
+    environment:
+      - PORT=4004
+
+    ports:
+      - "4004:4004"

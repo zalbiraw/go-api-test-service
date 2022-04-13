@@ -20,7 +20,7 @@ func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.Us
 
 	users := helpers.GetUsers()
 
-	return users[userId], nil
+	return users[userId-1], nil
 }
 
 // Entity returns generated.EntityResolver implementation.

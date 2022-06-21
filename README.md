@@ -18,10 +18,10 @@ The notification data is generated using the `loremipsum` library.
 You can use the `docker-compose.yml` to stand up and test these services. 
 
 Run `docker-compose up` from the root of the repo. You should be able to access the services on the following ports:
-- Users: `4000`
-- Posts: `4001`
-- Comments: `4002`
-- Notifications: `4003 `
+- Users: `4001`
+- Posts: `4002`
+- Comments: `4003`
+- Notifications: `4004 `
 
 ### Containers
 Containers are available on DockerHub under [zalbiraw/go-api-test-service](https://hub.docker.com/r/zalbiraw/go-api-test-service).

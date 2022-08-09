@@ -2,8 +2,6 @@
 package main
 
 import (
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
 	"log"
 	"net/http"
 	"os"
@@ -16,6 +14,9 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 
 	"github.com/gorilla/websocket"
+
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
 )
 
 const defaultPort = "4104"

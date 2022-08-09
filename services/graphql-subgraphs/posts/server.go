@@ -2,12 +2,14 @@
 package main
 
 import (
-	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/zalbiraw/go-api-test-service/helpers"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/99designs/gqlgen/graphql/playground"
+
+	"github.com/zalbiraw/go-api-test-service/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph"
 )
 
 const defaultPort = "4102"
@@ -21,7 +23,7 @@ func main() {
 	err := helpers.LoadPosts()
 
 	if nil != err {
-		panic("Unable to load posts-subgraph.")
+		panic("Unable to load posts.")
 	}
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))

@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
-	"strconv"
 )
 
+// FindUserByID is the resolver for the findUserByID field.
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	userId, err := strconv.Atoi(id)
 	if nil != err {

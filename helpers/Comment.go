@@ -2,8 +2,9 @@ package helpers
 
 import (
 	"encoding/json"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
 	"io/ioutil"
+
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
 )
 
 var comments []*model.Comment

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 
@@ -10,7 +11,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
 )
 
-const defaultPort = "4003"
+const defaultPort = "3103"
 
 var comments []*model.Comment
 
@@ -45,5 +46,6 @@ func main() {
 		w.Write(jsBytes)
 	})
 
-	http.ListenAndServe(":"+port, muxer)
+	log.Printf("connect to http://localhost:%s/ to test API", port)
+	log.Fatal(http.ListenAndServe(":"+port, muxer))
 }

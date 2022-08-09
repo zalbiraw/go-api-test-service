@@ -2,8 +2,9 @@ package helpers
 
 import (
 	"encoding/json"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
 	"io/ioutil"
+
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
 )
 
 var users []*model.User

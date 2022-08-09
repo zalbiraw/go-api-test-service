@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
-	"strconv"
 )
 
+// Comment is the resolver for the comment field.
 func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment, error) {
 	commentId, err := strconv.Atoi(id)
 	if nil != err {
@@ -22,6 +24,7 @@ func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment,
 	return comments[commentId-1], nil
 }
 
+// Comments is the resolver for the comments field.
 func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) {
 	return helpers.GetComments(), nil
 }

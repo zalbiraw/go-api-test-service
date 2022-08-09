@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
-	"strconv"
 )
 
+// Post is the resolver for the post field.
 func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error) {
 	postId, err := strconv.Atoi(id)
 	if nil != err {
@@ -22,6 +24,7 @@ func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error
 	return posts[postId-1], nil
 }
 
+// Posts is the resolver for the posts field.
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
 	return helpers.GetPosts(), nil
 }

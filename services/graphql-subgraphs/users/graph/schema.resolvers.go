@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
-	"strconv"
 )
 
+// User is the resolver for the user field.
 func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error) {
 	userId, err := strconv.Atoi(id)
 	if nil != err {
@@ -22,6 +24,7 @@ func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error
 	return users[userId-1], nil
 }
 
+// Users is the resolver for the users field.
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 	return helpers.GetUsers(), nil
 }

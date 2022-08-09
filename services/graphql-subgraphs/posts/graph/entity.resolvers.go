@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
-	"strconv"
 )
 
+// FindPostByID is the resolver for the findPostByID field.
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
 	postId, err := strconv.Atoi(id)
 	if nil != err {
@@ -22,6 +24,7 @@ func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Po
 	return posts[postId-1], nil
 }
 
+// FindUserByID is the resolver for the findUserByID field.
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	postsArray := helpers.GetPosts()
 

@@ -5,14 +5,16 @@ package graph
 
 import (
 	"context"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/model"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/helpers"
 	"math/rand"
 	"strconv"
 	"time"
+
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/helpers"
 )
 
+// GetUserNotifications is the resolver for the getUserNotifications field.
 func (r *subscriptionResolver) GetUserNotifications(ctx context.Context, userID string) (<-chan *model.User, error) {
 	userId, err := strconv.Atoi(userID)
 	if nil != err {

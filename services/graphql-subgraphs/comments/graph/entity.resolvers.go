@@ -5,12 +5,14 @@ package graph
 
 import (
 	"context"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
-	"strconv"
 )
 
+// FindCommentByID is the resolver for the findCommentByID field.
 func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model.Comment, error) {
 	commentId, err := strconv.Atoi(id)
 	if nil != err {
@@ -22,6 +24,7 @@ func (r *entityResolver) FindCommentByID(ctx context.Context, id string) (*model
 	return comments[commentId-1], nil
 }
 
+// FindPostByID is the resolver for the findPostByID field.
 func (r *entityResolver) FindPostByID(ctx context.Context, id string) (*model.Post, error) {
 	commentsArray := helpers.GetComments()
 

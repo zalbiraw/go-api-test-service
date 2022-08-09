@@ -13,7 +13,7 @@ func (Notification) IsEntity() {}
 
 type User struct {
 	ID            string          `json:"id"`
-	Notifications []*Notification `json:"notifications-subgraph"`
+	Notifications []*Notification `json:"notifications"`
 }
 
 func (User) IsEntity() {}

@@ -5,13 +5,15 @@ package graph
 
 import (
 	"context"
+	"math/rand"
+	"strconv"
+
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/model"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/helpers"
-	"math/rand"
-	"strconv"
 )
 
+// FindNotificationByID is the resolver for the findNotificationByID field.
 func (r *entityResolver) FindNotificationByID(ctx context.Context, id string) (*model.Notification, error) {
 	return &model.Notification{
 		ID:     id,
@@ -21,6 +23,7 @@ func (r *entityResolver) FindNotificationByID(ctx context.Context, id string) (*
 	}, nil
 }
 
+// FindUserByID is the resolver for the findUserByID field.
 func (r *entityResolver) FindUserByID(ctx context.Context, id string) (*model.User, error) {
 	userId, err := strconv.Atoi(id)
 	if nil != err {

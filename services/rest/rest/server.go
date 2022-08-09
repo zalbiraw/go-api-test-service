@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -10,7 +10,7 @@ import (
 	"github.com/go-chi/chi"
 )
 
-const defaultPort = "4000"
+const defaultPort = "3100"
 
 func main() {
 	port := os.Getenv("PORT")
@@ -21,10 +21,11 @@ func main() {
 	muxer := chi.NewMux()
 
 	muxer.Get("/json", func(w http.ResponseWriter, r *http.Request) {
-		jsBytes, _ := json.Marshal(fmt.Sprintf(`{"time":"%s"}`, time.Now().String()))
+		str := fmt.Sprintf(`{"time":"%s"}`, time.Now().String())
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(jsBytes)
+		w.Write([]byte(str))
 	})
 
-	http.ListenAndServe(":"+port, muxer)
+	log.Printf("connect to http://localhost:%s/ to test API", port)
+	log.Fatal(http.ListenAndServe(":"+port, muxer))
 }

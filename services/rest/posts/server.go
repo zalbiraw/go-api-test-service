@@ -5,11 +5,12 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
+	"log"
 	"net/http"
 	"os"
 )
 
-const defaultPort = "4002"
+const defaultPort = "3102"
 
 var posts []*model.Post
 
@@ -44,5 +45,6 @@ func main() {
 		w.Write(jsBytes)
 	})
 
-	http.ListenAndServe(":"+port, muxer)
+	log.Printf("connect to http://localhost:%s/ to test API", port)
+	log.Fatal(http.ListenAndServe(":"+port, muxer))
 }

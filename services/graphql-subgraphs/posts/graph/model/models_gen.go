@@ -13,7 +13,7 @@ func (Post) IsEntity() {}
 
 type User struct {
 	ID    string  `json:"id"`
-	Posts []*Post `json:"posts-subgraph"`
+	Posts []*Post `json:"posts"`
 }
 
 func (User) IsEntity() {}

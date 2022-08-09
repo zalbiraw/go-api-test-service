@@ -1,89 +1,89 @@
 version: '3.9'
 services:
   rest:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: rest
     entrypoint: ./services/rest/rest/server
 
     environment:
-      - PORT=5000
+      - PORT=3100
 
     ports:
-      - "5000:5000"
+      - "3100:3100"
 
   users-rest:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: users-rest
     entrypoint: ./services/rest/users/server
 
     environment:
-      - PORT=5001
+      - PORT=3101
 
     ports:
-      - "5001:5001"
+      - "3101:3101"
 
   posts-rest:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: posts-rest
     entrypoint: ./services/rest/posts/server
 
     environment:
-      - PORT=5002
+      - PORT=3102
 
     ports:
-      - "5002:5002"
+      - "3102:3102"
 
   comments-rest:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: comments-rest
     entrypoint: ./services/rest/comments/server
 
     environment:
-      - PORT=5003
+      - PORT=3103
 
     ports:
-      - "5003:5003"
+      - "3103:3103"
 
   users-subgraph:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: users-subgraph
     entrypoint: ./services/graphql-subgraphs/users/server
 
     environment:
-      - PORT=4001
+      - PORT=4201
 
     ports:
-      - "4001:4001"
+      - "4201:4201"
 
   posts-subgraph:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: posts-subgraph
     entrypoint: ./services/graphql-subgraphs/posts/server
 
     environment:
-      - PORT=4002
+      - PORT=4202
 
     ports:
-      - "4002:4002"
+      - "4202:4202"
 
   comments-subgraph:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: comments-subgraph
     entrypoint: ./services/graphql-subgraphs/comments/server
 
     environment:
-      - PORT=4003
+      - PORT=4203
 
     ports:
-      - "4003:4003"
+      - "4203:4203"
 
   notifications-subgraph:
-    image: zalbiraw/go-api-test-service
+    image: zalbiraw/go-api-test-service:v1.0.0
     container_name: notifications-subgraph
     entrypoint: ./services/graphql-subgraphs/notifications/server
 
     environment:
-      - PORT=4004
+      - PORT=4204
 
     ports:
-      - "4004:4004"
+      - "4204:4204"

@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   rest:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: rest
     entrypoint: ./services/rest/rest/server
 
@@ -12,7 +12,7 @@ services:
       - "3100:3100"
 
   users-rest:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: users-rest
     entrypoint: ./services/rest/users/server
 
@@ -23,7 +23,7 @@ services:
       - "3101:3101"
 
   posts-rest:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: posts-rest
     entrypoint: ./services/rest/posts/server
 
@@ -34,7 +34,7 @@ services:
       - "3102:3102"
 
   comments-rest:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: comments-rest
     entrypoint: ./services/rest/comments/server
 
@@ -45,7 +45,7 @@ services:
       - "3103:3103"
 
   users-subgraph:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: users-subgraph
     entrypoint: ./services/graphql-subgraphs/users/server
 
@@ -56,7 +56,7 @@ services:
       - "4201:4201"
 
   posts-subgraph:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: posts-subgraph
     entrypoint: ./services/graphql-subgraphs/posts/server
 
@@ -67,7 +67,7 @@ services:
       - "4202:4202"
 
   comments-subgraph:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: comments-subgraph
     entrypoint: ./services/graphql-subgraphs/comments/server
 
@@ -78,7 +78,7 @@ services:
       - "4203:4203"
 
   notifications-subgraph:
-    image: zalbiraw/go-api-test-service:v1.0.0
+    image: zalbiraw/go-api-test-service:v2.0.0
     container_name: notifications-subgraph
     entrypoint: ./services/graphql-subgraphs/notifications/server
 

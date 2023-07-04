@@ -7,9 +7,9 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/helpers"
 )
 
 // FindPostByID is the resolver for the findPostByID field.

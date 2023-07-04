@@ -8,11 +8,11 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/playground"
 
-	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/helpers"
 )
 
-const defaultPort = "4103"
+const defaultPort = "4203"
 
 func main() {
 	port := os.Getenv("PORT")

@@ -1,15 +1,19 @@
 # go-api-test-service
 This library allows you to launch different REST, GraphQL and GraphQL subgraphs to help test your APIs.
 
-The available servcies are:
+The available services are:
 - rest
 - users-rest
 - posts-rest
 - comments-rest
+- users-graph
+- posts-graph
+- comments-graph
+- notifications-graph
 - users-subgraph
 - posts-subgraph
 - comments-subgraph
-- notificaitons-subgraph (federated subscription)
+- notifications-subgraph (federated subscription)
 
 The same docker file will allow you to run the different services. You can launch the service you want by setting the entrypoint to the docker container to be `entrypoint: ./$SERVICE_NAME/server`.
 
@@ -26,6 +30,10 @@ Run `docker-compose up` from the root of the repo. You should be able to access 
 - users-rest: `3101`
 - posts-rest: `3102`
 - comments-rest: `3103`
+- users-graph: `4101`
+- posts-graph: `4102`
+- comments-graph: `4103`
+- notifications-graph: `4104`
 - users-subgraph: `4201`
 - posts-subgraph: `4202`
 - comments-subgraph: `4203`

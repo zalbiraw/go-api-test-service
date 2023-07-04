@@ -19,7 +19,7 @@ import (
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
 )
 
-const defaultPort = "4104"
+const defaultPort = "4204"
 
 func main() {
 	port := os.Getenv("PORT")

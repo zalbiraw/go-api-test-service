@@ -1,0 +1,10 @@
+type Subscription {
+    getUserNotifications(userId: ID!): [Notification!]!
+}
+
+type Notification {
+    id: ID!
+    userId: ID!
+    title: String!
+    body: String!
+}

@@ -2,17 +2,18 @@
 package main
 
 import (
+	"github.com/99designs/gqlgen/graphql/handler"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/99designs/gqlgen/graphql/playground"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/comments/graph"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/comments/helpers"
 )
 
-const defaultPort = "4203"
+const defaultPort = "4103"
 
 func main() {
 	port := os.Getenv("PORT")
@@ -27,7 +28,7 @@ func main() {
 	}
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
-	http.Handle("/query", graph.GraphQLEndpointHandler(graph.EndpointOptions{EnableDebug: false}))
+	http.Handle("/query", handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}})))
 
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))

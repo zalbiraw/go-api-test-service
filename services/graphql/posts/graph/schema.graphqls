@@ -1,0 +1,11 @@
+type Query {
+    post(id: ID!): Post!
+    posts: [Post!]!
+}
+
+type Post {
+    id: ID!
+    userId: ID!
+    title: String!
+    body: String!
+}

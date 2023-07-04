@@ -2,13 +2,15 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/go-chi/chi"
-	"github.com/zalbiraw/go-api-test-service/helpers"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/go-chi/chi"
+
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/helpers"
 )
 
 const defaultPort = "3101"

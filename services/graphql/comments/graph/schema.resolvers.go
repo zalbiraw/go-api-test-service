@@ -5,11 +5,10 @@ package graph
 
 import (
 	"context"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/helpers"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/comments/helpers"
 )
 
 // Comment is the resolver for the comment field.
@@ -29,7 +28,7 @@ func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) 
 	return helpers.GetComments(), nil
 }
 
-// Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+// Query returns QueryResolver implementation.
+func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
 type queryResolver struct{ *Resolver }

@@ -7,9 +7,8 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/users/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/users/helpers"
 )
 
 // User is the resolver for the user field.
@@ -29,7 +28,7 @@ func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 	return helpers.GetUsers(), nil
 }
 
-// Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+// Query returns QueryResolver implementation.
+func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
 type queryResolver struct{ *Resolver }

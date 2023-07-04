@@ -5,11 +5,10 @@ package graph
 
 import (
 	"context"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/helpers"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/generated"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/posts/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/posts/helpers"
 )
 
 // Post is the resolver for the post field.
@@ -29,7 +28,7 @@ func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
 	return helpers.GetPosts(), nil
 }
 
-// Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+// Query returns QueryResolver implementation.
+func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
 type queryResolver struct{ *Resolver }

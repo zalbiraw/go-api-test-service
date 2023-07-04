@@ -15,11 +15,10 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/notifications/graph/generated"
+	"github.com/zalbiraw/go-api-test-service/services/graphql/notifications/graph"
 )
 
-const defaultPort = "4204"
+const defaultPort = "4104"
 
 func main() {
 	port := os.Getenv("PORT")
@@ -27,7 +26,7 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.New(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
 
 	srv.AddTransport(&transport.Websocket{
 		Upgrader: websocket.Upgrader{

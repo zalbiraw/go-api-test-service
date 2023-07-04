@@ -5,9 +5,9 @@ package graph
 
 import (
 	"context"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/helpers"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
 )

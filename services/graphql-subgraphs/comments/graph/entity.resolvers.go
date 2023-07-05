@@ -7,9 +7,9 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/helpers"
 )
 
 // FindCommentByID is the resolver for the findCommentByID field.

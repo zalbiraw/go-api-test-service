@@ -2,12 +2,14 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/go-chi/chi"
-	"github.com/zalbiraw/go-api-test-service/helpers"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/posts/graph/model"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/go-chi/chi"
+
+	"github.com/zalbiraw/go-api-test-service/services/rest/posts/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/rest/posts/model"
 )
 
 const defaultPort = "3102"

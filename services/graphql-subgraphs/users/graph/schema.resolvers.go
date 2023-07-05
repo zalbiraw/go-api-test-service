@@ -7,9 +7,9 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/zalbiraw/go-api-test-service/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/generated"
 	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/helpers"
 )
 
 // User is the resolver for the user field.

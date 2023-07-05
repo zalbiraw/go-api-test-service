@@ -7,8 +7,8 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
-	"github.com/zalbiraw/go-api-test-service/helpers"
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/comments/graph/model"
+	"github.com/zalbiraw/go-api-test-service/services/rest/comments/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/rest/comments/model"
 )
 
 const defaultPort = "3103"

@@ -10,7 +10,7 @@ import (
 var comments []*model.Comment
 
 func LoadComments() error {
-	byteValue, err := ioutil.ReadFile("./helpers/comments-db.json")
+	byteValue, err := ioutil.ReadFile("../../../../helpers/comments-db.json")
 
 	if nil != err {
 		return err

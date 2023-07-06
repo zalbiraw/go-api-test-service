@@ -10,7 +10,7 @@ import (
 var posts []*model.Post
 
 func LoadPosts() error {
-	byteValue, err := ioutil.ReadFile("../../../../helpers/posts-db.json")
+	byteValue, err := ioutil.ReadFile("/go/src/github.com/zalbiraw/go-api-test-service/helpers/posts-db.json")
 
 	if nil != err {
 		return err

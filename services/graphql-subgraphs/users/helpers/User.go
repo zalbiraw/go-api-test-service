@@ -10,7 +10,7 @@ import (
 var users []*model.User
 
 func LoadUsers() error {
-	byteValue, err := ioutil.ReadFile("../../../../helpers/users-db.json")
+	byteValue, err := ioutil.ReadFile("/go/src/github.com/zalbiraw/go-api-test-service/helpers/users-db.json")
 
 	if nil != err {
 		return err

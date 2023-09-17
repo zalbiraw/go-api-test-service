@@ -1,3 +1,7 @@
+type Query {
+    placeholder: String
+}
+
 type Subscription {
     getUserNotifications(userId: ID!): [Notification!]!
 }

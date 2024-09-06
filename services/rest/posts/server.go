@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -10,17 +11,58 @@ import (
 
 	"github.com/zalbiraw/go-api-test-service/services/rest/posts/helpers"
 	"github.com/zalbiraw/go-api-test-service/services/rest/posts/model"
+
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
+	"go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 )
 
 const defaultPort = "3102"
 
-var posts []*model.Post
+func initTracer() func() {
+	ctx := context.Background()
+
+	// Set up OTLP HTTP exporter
+	exporter, err := otlptracehttp.New(ctx)
+	if err != nil {
+		log.Fatalf("failed to create OTLP trace exporter: %v", err)
+	}
+
+	// Create a new trace provider
+	tp := trace.NewTracerProvider(
+		trace.WithBatcher(exporter),
+		trace.WithResource(resource.NewWithAttributes(
+			semconv.SchemaURL,
+			semconv.ServiceNameKey.String("posts-rest-service"),
+		)),
+	)
+
+	// Register as global trace provider
+	otel.SetTracerProvider(tp)
+
+	// Set global propagator for traceparent header support
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	return func() {
+		err := tp.Shutdown(ctx)
+		if err != nil {
+			log.Fatalf("failed to shutdown TracerProvider: %v", err)
+		}
+	}
+}
 
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
 	}
+
+	shutdown := initTracer()
+	defer shutdown()
 
 	err := helpers.LoadPosts()
 	if nil != err {
@@ -32,6 +74,13 @@ func main() {
 	muxer := chi.NewMux()
 
 	muxer.Get("/users/{id}/posts", func(w http.ResponseWriter, r *http.Request) {
+		ctx := otel.GetTextMapPropagator().Extract(r.Context(), propagation.HeaderCarrier(r.Header))
+		tracer := otel.Tracer("posts-rest-api")
+
+		// Start a new span
+		ctx, span := tracer.Start(ctx, "GetPostsByUserID")
+		defer span.End()
+
 		userID := chi.URLParam(r, "id")
 
 		var userPosts []*model.Post
@@ -42,7 +91,19 @@ func main() {
 			}
 		}
 
-		jsBytes, _ := json.Marshal(userPosts)
+		span.SetAttributes(
+			attribute.String("user.id", userID),
+			attribute.Int("post.count", len(userPosts)),
+		)
+
+		jsBytes, err := json.Marshal(userPosts)
+		if err != nil {
+			span.RecordError(err)
+			http.Error(w, "Failed to marshal posts", http.StatusInternalServerError)
+			return
+		}
+
+		span.AddEvent("Fetched posts successfully")
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(jsBytes)
 	})

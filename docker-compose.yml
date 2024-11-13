@@ -1,132 +1,175 @@
 services:
   rest:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: rest
     entrypoint: ./services/rest/rest/server
 
     environment:
-      - PORT=3100
+      PORT: 3100
 
     ports:
       - "3100:3100"
 
   users-rest:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: users-rest
     entrypoint: ./services/rest/users/server
 
     environment:
-      - PORT=3101
+      PORT: 3101
 
     ports:
       - "3101:3101"
 
   posts-rest:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: posts-rest
     entrypoint: ./services/rest/posts/server
 
     environment:
-      - PORT=3102
+      PORT: 3102
 
     ports:
       - "3102:3102"
 
   comments-rest:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: comments-rest
     entrypoint: ./services/rest/comments/server
 
     environment:
-      - PORT=3103
+      PORT: 3103
 
     ports:
       - "3103:3103"
 
   users-graph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: users-graph
     entrypoint: ./services/graphql/users/server
 
     environment:
-      - PORT=4101
+      PORT: 4101
 
     ports:
       - "4101:4101"
 
   posts-graph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: posts-graph
     entrypoint: ./services/graphql/posts/server
 
     environment:
-      - PORT=4102
+      PORT: 4102
 
     ports:
       - "4102:4102"
 
   comments-graph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: comments-graph
     entrypoint: ./services/graphql/comments/server
 
     environment:
-      - PORT=4103
+      PORT: 4103
 
     ports:
       - "4103:4103"
 
   notifications-graph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: notifications-graph
     entrypoint: ./services/graphql/notifications/server
 
     environment:
-      - PORT=4104
+      PORT: 4104
 
     ports:
       - "4104:4104"
 
   users-subgraph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: users-subgraph
     entrypoint: ./services/graphql-subgraphs/users/server
 
     environment:
-      - PORT=4201
+      PORT: 4201
 
     ports:
       - "4201:4201"
 
   posts-subgraph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: posts-subgraph
     entrypoint: ./services/graphql-subgraphs/posts/server
 
     environment:
-      - PORT=4202
+      PORT: 4202
 
     ports:
       - "4202:4202"
 
   comments-subgraph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: comments-subgraph
     entrypoint: ./services/graphql-subgraphs/comments/server
 
     environment:
-      - PORT=4203
+      PORT: 4203
 
     ports:
       - "4203:4203"
 
   notifications-subgraph:
-    image: zalbiraw/go-api-test-service:v3.3.0
+    image: zalbiraw/go-api-test-service:v3.4.0
     container_name: notifications-subgraph
     entrypoint: ./services/graphql-subgraphs/notifications/server
 
     environment:
-      - PORT=4204
+      PORT: 4204
 
     ports:
       - "4204:4204"
+
+  notifications-kafka-producer:
+    image: zalbiraw/go-api-test-service:v3.4.0
+    container_name: notifications-kafka-producer
+    entrypoint: ./services/kafka/notifications/producer
+
+    networks:
+      - kafka
+
+    environment:
+      KAFKA_BROKER_URL: kafka:9092
+      KAFKA_TOPIC: test
+      PRODUCE_INTERVAL: 5s
+
+    depends_on:
+      - kafka
+
+  kafka:
+    image: apache/kafka:3.9.0
+    container_name: kafka
+
+    networks:
+      - kafka
+
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+
+    ports:
+      - "9092:9092"
+
+networks:
+  kafka:

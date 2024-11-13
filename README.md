@@ -1,5 +1,5 @@
 # go-api-test-service
-This library allows you to launch different REST, GraphQL and GraphQL subgraphs to help test your APIs.
+This library allows you to launch different REST, GraphQL, GraphQL subgraphs, and Kafka producers to help test your APIs.
 
 The available services are:
 - rest
@@ -14,6 +14,7 @@ The available services are:
 - posts-subgraph
 - comments-subgraph
 - notifications-subgraph (federated subscription)
+- notifications-kafka-producer
 
 The same docker file will allow you to run the different services. You can launch the service you want by setting the entrypoint to the docker container to be `entrypoint: ./$SERVICE_NAME/server`.
 

@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-chi/chi"
 
-	"github.com/zalbiraw/go-api-test-service/services/graphql-subgraphs/users/helpers"
+	"github.com/zalbiraw/go-api-test-service/services/rest/users/helpers"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"

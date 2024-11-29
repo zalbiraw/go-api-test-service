@@ -99,10 +99,10 @@ func getCodec() *goavro.Codec {
 		"name": "Notification",
 		"fields": [
 			{
-				"name": "notificationType",
+				"name": "type",
 				"type": {
 					"type": "enum",
-					"name": "NotificationType",
+					"name": "type",
 					"symbols": ["LIKE", "SHARE", "COMMENT"]
 				}
 			},

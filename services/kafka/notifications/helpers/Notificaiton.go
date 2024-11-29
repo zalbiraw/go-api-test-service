@@ -64,7 +64,7 @@ func GetRandomNotification() interface{} {
 
 	// Return the map that matches Avro schema
 	return map[string]interface{}{
-		"notificationType": notificationType,
-		"msg":              msg,
+		"type": notificationType,
+		"msg":  msg,
 	}
 }
